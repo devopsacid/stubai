@@ -1,0 +1,6 @@
+langchain==0.1.16
+langchain_openai==0.1.4
+opencv-python==4.7.0.72
+streamlit==1.27.2
+python-dotenv==0.19.2
+scikit-image==0.20.0

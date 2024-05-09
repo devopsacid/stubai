@@ -1,0 +1,26 @@
+version: '3.8'
+
+x-environment: &global-environment
+  OPENAI_API_KEY: # Tu treba pridat OPENAI API KEY
+
+services:
+  img-gen:
+    build:
+      context: ./image_gen
+      dockerfile: Dockerfile
+    environment:
+      <<: *global-environment
+    ports:
+      - "8012:8080"
+
+  qa:
+    build:
+      context: ./qna
+      dockerfile: Dockerfile
+    environment:
+      <<: *global-environment
+      OPENAI_MODEL: gpt-3.5-turbo-0125
+    volumes:
+      - ./pdf-files:/usr/src/app/data
+    ports:
+      - "8013:8080"
